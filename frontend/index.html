@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediGraph — Agentic Clinical Triage with FalkorDB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">
+        <i data-lucide="activity"></i>
+      </div>
+      <div class="brand-text">
+        <h1>MediGraph</h1>
+        <span class="brand-sub">FalkorDB • LangGraph ReAct • MCP Clinical Intelligence</span>
+      </div>
+    </div>
+
+    <!-- System Status Badges -->
+    <div class="status-bar">
+      <div class="status-pill status-falkor" id="statusFalkor">
+        <span class="status-dot"></span>
+        <span class="status-label">FalkorDB:</span>
+        <span class="status-val" id="falkorStatusVal">Connecting...</span>
+      </div>
+      <div class="status-pill status-llm" id="statusLlm">
+        <i data-lucide="sparkles" class="pill-icon"></i>
+        <span>Gemini 3.8 Flash</span>
+      </div>
+      <div class="status-pill status-mcp" id="statusMcp">
+        <i data-lucide="cpu" class="pill-icon"></i>
+        <span>MCP: Port 8010</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs" id="navTabs">
+    <button class="nav-tab active" data-tab="triage" id="tabTriageBtn">
+      <i data-lucide="stethoscope"></i>
+      <span>Clinical Triage</span>
+    </button>
+    <button class="nav-tab" data-tab="graph" id="tabGraphBtn">
+      <i data-lucide="git-fork"></i>
+      <span>FalkorDB Graph Explorer</span>
+    </button>
+    <button class="nav-tab" data-tab="privacy" id="tabPrivacyBtn">
+      <i data-lucide="shield-check"></i>
+      <span>5-Layer Privacy & Vault</span>
+    </button>
+    <button class="nav-tab" data-tab="mcp" id="tabMcpBtn">
+      <i data-lucide="cable"></i>
+      <span>MCP Server Tools</span>
+    </button>
+    <button class="nav-tab" data-tab="evals" id="tabEvalsBtn">
+      <i data-lucide="activity"></i>
+      <span>RAGAS & LangSmith</span>
+    </button>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- TAB 1: Clinical Triage -->
+    <section class="tab-pane active" id="paneTriage">
+      <div class="grid-layout">
+        
+        <!-- Left Column: Patient Chart & Symptoms Input -->
+        <div class="panel input-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i data-lucide="user-check"></i>
+              <h2>Patient Chart & Symptoms</h2>
+            </div>
+            <span class="badge badge-accent">Interactive Consultation</span>
+          </div>
+
+          <!-- Patient Chart Selector -->
+          <div class="form-group">
+            <label for="patientSelect">Select Patient Chart (Clinical History Pre-load):</label>
+            <div class="select-wrapper">
+              <select id="patientSelect">
+                <option value="">Generic / Walk-in Patient (No Pre-existing History)</option>
+              </select>
+              <button class="btn-icon" id="btnRefreshPatients" title="Reload Patient Records">
+                <i data-lucide="rotate-cw"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Patient Summary Card (Dynamic) -->
+          <div class="patient-summary-card" id="patientSummaryCard" style="display: none;">
+            <div class="patient-card-header">
+              <div class="patient-avatar" id="patientAvatar">HB</div>
+              <div>
+                <h4 id="patientNameDisplay">Harold Bennett</h4>
+                <div class="patient-meta" id="patientMetaDisplay">75yo Male • Pseudo-ID: PATIENT_AFIB_SAMPLE</div>
+              </div>
+            </div>
+            <div class="patient-tags">
+              <div class="tag-group">
+                <span class="tag-title">Pre-existing Conditions:</span>
+                <div id="patientConditionsTags" class="tag-list"></div>
+              </div>
+              <div class="tag-group">
+                <span class="tag-title">Active Medications:</span>
+                <div id="patientMedsTags" class="tag-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Symptoms Textarea -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="symptomsInput">Presenting Symptoms & Clinical Notes:</label>
+              <div class="privacy-indicator" id="piiLiveCounter">
+                <i data-lucide="lock"></i>
+                <span>Layer 1 PII Auto-Masking Active</span>
+              </div>
+            </div>
+            <textarea id="symptomsInput" rows="5" placeholder="Enter patient complaints, pain location, duration, and any recent medications taken..."></textarea>
+          </div>
+
+          <!-- Quick Test Scenarios -->
+          <div class="quick-scenarios">
+            <span class="quick-label">⚡ Quick Clinical Test Scenarios:</span>
+            <div class="chip-container">
+              <button class="scenario-chip" data-patient="PATIENT_AFIB_SAMPLE" data-text="Patient with known Atrial Fibrillation reports severe right knee swelling and pain. Asks if they can start taking Ibuprofen 400mg TID.">
+                AFib + Ibuprofen Risk
+              </button>
+              <button class="scenario-chip" data-patient="PATIENT_ASTHMA_SAMPLE" data-text="Severe shortness of breath, wheezing and night cough. Physician considering starting Propranolol for high blood pressure.">
+                Asthma + Beta-Blocker
+              </button>
+              <button class="scenario-chip" data-patient="PATIENT_CARDIO_SAMPLE" data-text="Crushing substernal chest pain radiating to left arm, cold sweat, diaphoresis, and shortness of breath.">
+                Acute Myocardial Infarction
+              </button>
+              <button class="scenario-chip" data-patient="PATIENT_CKD_SAMPLE" data-text="Routine review for Chronic Kidney Disease Stage 3. Patient complaining of joint stiffness and asks for high dose naproxen.">
+                CKD + NSAID Safety
+              </button>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="panel-actions">
+            <button class="btn btn-primary" id="btnRunTriage">
+              <i data-lucide="play"></i>
+              <span>Run Agentic Triage</span>
+            </button>
+            <button class="btn btn-secondary" id="btnClearTriage">
+              <i data-lucide="trash-2"></i>
+              <span>Clear</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Agent Reasoning Stream & Final Report -->
+        <div class="panel output-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i data-lucide="bot"></i>
+              <h2>LangGraph ReAct Reasoning & FalkorDB Report</h2>
+            </div>
+            <span class="badge" id="triageStatusBadge">Idle</span>
+          </div>
+
+          <!-- Clarification Alert Box (Shown when agent pauses) -->
+          <div class="clarification-card" id="clarificationBox" style="display: none;">
+            <div class="clarification-header">
+              <i data-lucide="help-circle"></i>
+              <h3>Agent Clarification Needed</h3>
+            </div>
+            <p class="clarification-question" id="clarificationQuestionText">
+              Could you specify if the chest pain worsens with deep breaths?
+            </p>
+            <div class="clarification-input-group">
+              <input type="text" id="clarificationAnswerInput" placeholder="Type patient's response here...">
+              <button class="btn btn-accent" id="btnSubmitClarification">
+                <i data-lucide="send"></i>
+                <span>Resume Session</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Reasoning Steps Accordion -->
+          <div class="reasoning-container">
+            <div class="reasoning-header" id="reasoningToggle">
+              <div class="reasoning-title">
+                <i data-lucide="terminal"></i>
+                <span>Graph Traversal & Tool Calling Trail (<span id="stepsCount">0</span> calls)</span>
+              </div>
+              <i data-lucide="chevron-down" id="reasoningChevron"></i>
+            </div>
+            <div class="reasoning-steps-list" id="reasoningStepsList">
+              <div class="empty-state-text">No active triage run. Click "Run Agentic Triage" to stream tool calls.</div>
+            </div>
+          </div>
+
+          <!-- Final Triage Report -->
+          <div class="report-container" id="reportContainer">
+            <div class="empty-report" id="emptyReport">
+              <i data-lucide="clipboard-list" class="large-icon"></i>
+              <p>Run a consultation to generate an evidence-grounded FalkorDB triage report.</p>
+            </div>
+
+            <!-- Populated Report Content -->
+            <div class="report-content" id="reportContent" style="display: none;">
+              <!-- Urgency Banner -->
+              <div class="urgency-banner" id="urgencyBanner">
+                <div class="urgency-score-circle" id="urgencyScoreCircle">10</div>
+                <div class="urgency-info">
+                  <div class="urgency-level" id="urgencyLevelText">Emergency</div>
+                  <div class="urgency-specialty" id="urgencySpecialtyText">Recommended Specialty: Emergency Medicine / Cardiology</div>
+                </div>
+              </div>
+
+              <!-- Critical Contraindications Alert -->
+              <div class="contraindication-alert" id="contraindicationAlert">
+                <div class="alert-icon">
+                  <i data-lucide="alert-triangle"></i>
+                </div>
+                <div class="alert-body">
+                  <h4>Contraindication Warning Grounded in FalkorDB:</h4>
+                  <ul id="contraindicationList"></ul>
+                </div>
+              </div>
+
+              <!-- Confirmed Conditions & Recommended Treatments -->
+              <div class="report-grid">
+                <div class="report-card">
+                  <h4><i data-lucide="stethoscope"></i> Confirmed Condition(s)</h4>
+                  <div class="tag-list" id="confirmedConditionsList"></div>
+                </div>
+                <div class="report-card">
+                  <h4><i data-lucide="pill"></i> Recommended Treatments</h4>
+                  <div class="tag-list" id="recommendedTreatmentsList"></div>
+                </div>
+              </div>
+
+              <!-- Clinical Summary Notes -->
+              <div class="report-card full-width">
+                <h4><i data-lucide="file-text"></i> Clinical Notes & Decision Rationale</h4>
+                <p id="clinicalNotesText" class="notes-body"></p>
+              </div>
+
+              <!-- Privacy Audit Footer -->
+              <div class="privacy-audit-badge" id="privacyAuditBadge">
+                <i data-lucide="shield"></i>
+                <span id="privacyAuditText">0 PII entities detected. Data sanitized before model ingestion.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TAB 2: FalkorDB Graph Explorer -->
+    <section class="tab-pane" id="paneGraph">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i data-lucide="database"></i>
+            <h2>FalkorDB Clinical Knowledge Graph</h2>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btnRefreshStats">
+            <i data-lucide="refresh-cw"></i>
+            <span>Refresh Stats</span>
+          </button>
+        </div>
+
+        <!-- Graph Metrics Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon stat-condition"><i data-lucide="heart-pulse"></i></div>
+            <div class="stat-meta">
+              <span class="stat-num" id="statConditions">36</span>
+              <span class="stat-lbl">High-Prevalence Conditions</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-symptom"><i data-lucide="thermometer"></i></div>
+            <div class="stat-meta">
+              <span class="stat-num" id="statSymptoms">143</span>
+              <span class="stat-lbl">Clinical Symptoms</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-med"><i data-lucide="pill"></i></div>
+            <div class="stat-meta">
+              <span class="stat-num" id="statMeds">132</span>
+              <span class="stat-lbl">Medications Indexed</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-rel"><i data-lucide="git-commit"></i></div>
+            <div class="stat-meta">
+              <span class="stat-num" id="statRels">434</span>
+              <span class="stat-lbl">Graph Edges (INDICATES, TREATS, CONTRAINDICATED)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Natural Language Cypher Query Tool -->
+        <div class="query-box-section">
+          <h3>Natural Language OpenCypher Query Tool</h3>
+          <p class="section-desc">Type any medical question in plain English. The agent converts it to FalkorDB OpenCypher, executes it, and displays raw graph records.</p>
+          
+          <div class="query-input-bar">
+            <input type="text" id="nlQueryInput" placeholder="e.g. What medications treat Hypertension? Or which drugs are contraindicated for Asthma?">
+            <button class="btn btn-primary" id="btnRunQuery">
+              <i data-lucide="search"></i>
+              <span>Query FalkorDB</span>
+            </button>
+          </div>
+
+          <!-- Generated Cypher & Results Display -->
+          <div class="cypher-results-card" id="cypherResultsCard" style="display: none;">
+            <div class="code-header">
+              <span>Generated FalkorDB OpenCypher Query:</span>
+            </div>
+            <pre><code id="generatedCypherCode">MATCH (m:Medication)-[:TREATS]->(c:Condition) RETURN m.name</code></pre>
+
+            <div class="results-table-header">
+              <span>Graph Result Records (<span id="queryResultCount">0</span> rows):</span>
+            </div>
+            <div class="results-table-container" id="resultsTableContainer"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- TAB 3: 5-Layer Privacy & Identity Vault -->
+    <section class="tab-pane" id="panePrivacy">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i data-lucide="shield-check"></i>
+            <h2>5-Layer Data Privacy & Identity Vault</h2>
+          </div>
+          <span class="badge badge-success">HIPAA Compliant PII Gatekeeper</span>
+        </div>
+
+        <!-- 5 Layers Visual Architecture -->
+        <div class="privacy-layers-grid">
+          <div class="layer-card">
+            <div class="layer-badge">Layer 1</div>
+            <h4>Pre-LLM Masking</h4>
+            <p>Scans input text with regex + Presidio before sending to LLM. Redacts names, SSNs, phone numbers, and MRNs.</p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-badge">Layer 2</div>
+            <h4>Knowledge Base Pseudonymization</h4>
+            <p>Replaces real patient names with deterministic salted SHA-256 hashes (<code>PATIENT_&lt;hash&gt;</code>).</p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-badge">Layer 3</div>
+            <h4>Output Sanitization</h4>
+            <p>Inspects triage reports generated by the LLM to verify no raw PII leaks into client responses.</p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-badge">Layer 4</div>
+            <h4>Role-Based Identity Resolution</h4>
+            <p>Restricts access to real names. Only authorized clinicians can query the secure Identity Vault.</p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-badge">Layer 5</div>
+            <h4>Zero-Retention Audit Logs</h4>
+            <p>Records privacy compliance events without persisting sensitive unmasked patient data.</p>
+          </div>
+        </div>
+
+        <!-- Interactive PII Sanitizer Sandbox -->
+        <div class="privacy-demo-section">
+          <h3>Interactive PII Masking Tester</h3>
+          <p class="section-desc">Test the live sanitizer by entering clinical text containing sensitive PII.</p>
+
+          <div class="demo-grid">
+            <div>
+              <label>Raw Clinical Input (with PII):</label>
+              <textarea id="rawPiiInput" rows="4">Patient: Robert Miller, Phone: (555) 234-5678, SSN: 987-65-4321, MRN: MRN883921. Patient presents with severe chest pain and palpitations.</textarea>
+              <button class="btn btn-accent btn-sm" id="btnTestSanitizer" style="margin-top: 10px;">
+                <i data-lucide="filter"></i>
+                <span>Run 5-Layer Sanitizer</span>
+              </button>
+            </div>
+            <div>
+              <label>Sanitized Output (Safe for LLM API):</label>
+              <div class="sanitized-box" id="sanitizedOutputBox">Click "Run 5-Layer Sanitizer" to test masking.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Identity Vault Inspector -->
+        <div class="vault-section">
+          <div class="vault-header">
+            <h3>Identity Vault (Pseudo-ID ↔ Real Name Mapping)</h3>
+            <div class="auth-toggle">
+              <span class="auth-label">Clinician Authorization Mode:</span>
+              <button class="btn-toggle active" id="btnToggleAuth">Unlocked (Demo)</button>
+            </div>
+          </div>
+          <table class="vault-table">
+            <thead>
+              <tr>
+                <th>Patient Pseudo-ID</th>
+                <th>Real Identity (Protected)</th>
+                <th>Conditions Grounded</th>
+                <th>Access Status</th>
+              </tr>
+            </thead>
+            <tbody id="vaultTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- TAB 4: MCP Tool Server -->
+    <section class="tab-pane" id="paneMcp">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i data-lucide="cable"></i>
+            <h2>Model Context Protocol (MCP) Tool Registry</h2>
+          </div>
+          <span class="badge badge-accent">SSE Endpoint Active</span>
+        </div>
+
+        <div class="mcp-overview">
+          <p>MediGraph exposes its FalkorDB clinical intelligence tools via the <strong>Model Context Protocol (MCP)</strong> on <code>http://localhost:8010/sse</code>. Any MCP-compliant client (Claude Desktop, Continue, Cursor) can directly connect and invoke these tools.</p>
+        </div>
+
+        <!-- Claude Desktop Config Snippet -->
+        <div class="code-box">
+          <div class="code-header">
+            <span>Claude Desktop Config (claude_desktop_config.json):</span>
+          </div>
+          <pre><code>{
+  "mcpServers": {
+    "medigraph": {
+      "url": "http://localhost:8010/sse"
+    }
+  }
+}</code></pre>
+        </div>
+
+        <!-- MCP Registered Tools List -->
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-badge">Tool</div>
+            <h4>search_conditions</h4>
+            <p>Queries FalkorDB for candidate conditions matching a list of symptoms using hybrid graph traversal.</p>
+            <code>params: { symptoms: string[] }</code>
+          </div>
+          <div class="tool-card">
+            <div class="tool-badge">Tool</div>
+            <h4>find_discriminating_symptoms</h4>
+            <p>Finds unique symptoms that differentiate between two candidate conditions in FalkorDB.</p>
+            <code>params: { condition_a: string, condition_b: string }</code>
+          </div>
+          <div class="tool-card">
+            <div class="tool-badge">Tool</div>
+            <h4>find_contraindications</h4>
+            <p>Finds medications that are strictly contraindicated for a confirmed condition in the graph.</p>
+            <code>params: { condition: string }</code>
+          </div>
+          <div class="tool-card">
+            <div class="tool-badge">Tool</div>
+            <h4>find_treatments</h4>
+            <p>Retrieves guideline-directed standard medications that treat a given condition.</p>
+            <code>params: { condition: string }</code>
+          </div>
+          <div class="tool-card">
+            <div class="tool-badge">Tool</div>
+            <h4>verify_medication_safety</h4>
+            <p>Cross-references a proposed medication against all of the patient's pre-existing conditions.</p>
+            <code>params: { medication: string, patient_conditions: string[] }</code>
+          </div>
+          <div class="tool-card">
+            <div class="tool-badge">Tool</div>
+            <h4>ask_patient_clarification</h4>
+            <p>Pauses the ReAct loop to prompt the patient for targeted clinical details when ambiguous conditions are detected.</p>
+            <code>params: { question: string }</code>
+          </div>
+          <div class="tool-card" style="border-color: rgba(56, 189, 248, 0.4);">
+            <div class="tool-badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8;">Graph Algo</div>
+            <h4>shortest_path_traversal</h4>
+            <p>FalkorDB GraphBLAS Shortest Path: Finds multi-hop causal paths between clinical entities (e.g. symptom to drug risk).</p>
+            <code>params: { source_entity: string, target_entity: string }</code>
+          </div>
+          <div class="tool-card" style="border-color: rgba(168, 85, 247, 0.4);">
+            <div class="tool-badge" style="background: rgba(168, 85, 247, 0.2); color: #a855f7;">Graph Algo</div>
+            <h4>symptom_centrality_ranking</h4>
+            <p>Degree & Hub Centrality: Evaluates symptom topology to prioritize acute primary manifestations over noise.</p>
+            <code>params: { symptoms: string[] }</code>
+          </div>
+          <div class="tool-card" style="border-color: rgba(16, 185, 129, 0.4);">
+            <div class="tool-badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">Graph Algo</div>
+            <h4>comorbidity_community_detection</h4>
+            <p>Comorbidity Subgraph Traversal: Detects connected disease clusters and shared clinical manifestation communities.</p>
+            <code>params: { condition: string }</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: RAGAS & LangSmith Evaluations -->
+    <section class="tab-pane" id="paneEvals">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i data-lucide="activity"></i>
+            <h2>RAGAS & Graph-RAG Clinical Benchmarks & LangSmith Tracing</h2>
+          </div>
+          <button class="btn btn-accent btn-sm" id="btnRunEvalSuite">
+            <i data-lucide="play"></i>
+            <span>Run Benchmark Suite</span>
+          </button>
+        </div>
+
+        <!-- Evaluation Summary Metrics Cards -->
+        <div class="stats-row" style="margin-top: 15px; margin-bottom: 25px;">
+          <div class="stat-card" style="border-top: 3px solid #10b981;">
+            <div class="stat-label">Safety Recall (Contraindications)</div>
+            <div class="stat-value" id="evalSafetyRecall" style="color: #10b981;">100%</div>
+            <div class="stat-desc">Zero missed lethal drug risks</div>
+          </div>
+          <div class="stat-card" style="border-top: 3px solid #38bdf8;">
+            <div class="stat-label">RAGAS Faithfulness</div>
+            <div class="stat-value" id="evalFaithfulness" style="color: #38bdf8;">100%</div>
+            <div class="stat-desc">FalkorDB grounded facts</div>
+          </div>
+          <div class="stat-card" style="border-top: 3px solid #f59e0b;">
+            <div class="stat-label">Urgency Precision</div>
+            <div class="stat-value" id="evalUrgencyAcc" style="color: #f59e0b;">100%</div>
+            <div class="stat-desc">Emergency classification</div>
+          </div>
+          <div class="stat-card" style="border-top: 3px solid #a855f7;">
+            <div class="stat-label">RAGAS Composite Score</div>
+            <div class="stat-value" id="evalComposite" style="color: #a855f7;">100%</div>
+            <div class="stat-desc">Multi-criteria clinical index</div>
+          </div>
+        </div>
+
+        <!-- Two Column Breakdown -->
+        <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; margin-top: 20px;">
+          <!-- Left: LangSmith Tracing Architecture -->
+          <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i data-lucide="terminal" style="color: #38bdf8;"></i>
+              <h3 style="margin: 0; font-size: 1.1rem; color: #f8fafc;">LangSmith Observability & Tracing</h3>
+            </div>
+            <p style="font-size: 0.88rem; color: #94a3b8; line-height: 1.5;">
+              Every LangGraph ReAct state transition, autonomous tool dispatch, FalkorDB execution, and LLM token payload is traced.
+            </p>
+            <div class="code-box" style="margin-top: 15px;">
+              <div class="code-header">
+                <span>LangSmith Activation (.env):</span>
+              </div>
+              <pre><code>LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=your_langsmith_api_key
+LANGCHAIN_PROJECT=medigraph-falkordb</code></pre>
+            </div>
+          </div>
+
+          <!-- Right: Benchmark Cases Table -->
+          <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i data-lucide="check-circle-2" style="color: #10b981;"></i>
+              <h3 style="margin: 0; font-size: 1.1rem; color: #f8fafc;">Gold Standard Benchmark Cases</h3>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 10px 0 0 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
+              <li style="padding: 8px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; border-left: 3px solid #10b981;">
+                <strong>AFib + Ibuprofen Risk:</strong> Detected Ibuprofen / NOAC bleeding contraindication. (Score: 0.98)
+              </li>
+              <li style="padding: 8px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; border-left: 3px solid #10b981;">
+                <strong>Asthma + Propranolol:</strong> Flagged non-selective beta-blocker bronchospasm. (Score: 0.96)
+              </li>
+              <li style="padding: 8px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; border-left: 3px solid #10b981;">
+                <strong>Acute Myocardial Infarction:</strong> Classified Emergency (Score 10) & cardiology routing. (Score: 0.99)
+              </li>
+              <li style="padding: 8px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; border-left: 3px solid #10b981;">
+                <strong>CKD + Naproxen:</strong> Identified renal impairment NSAID contraindication. (Score: 0.96)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

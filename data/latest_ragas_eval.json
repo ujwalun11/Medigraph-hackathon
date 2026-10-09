@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-10-04T12:07:49Z",
+  "model": "gemini-3.8-flash",
+  "graph_backend": "FalkorDB",
+  "total_cases_evaluated": 4,
+  "aggregate_metrics": {
+    "clinical_safety_recall": 1.0,
+    "ragas_faithfulness": 1.0,
+    "urgency_classification_accuracy": 1.0,
+    "context_recall": 1.0,
+    "ragas_composite_score": 1.0,
+    "mean_latency_seconds": 132.63
+  },
+  "case_details": [
+    {
+      "case_id": "CASE_AFIB_NSAID",
+      "status": "complete",
+      "latency_sec": 103.66,
+      "urgency": "Urgent",
+      "urgency_score": 6,
+      "contraindications_found": [
+        "Ibuprofen is contraindicated in Atrial Fibrillation",
+        "Ibuprofen is contraindicated in Hypertension"
+      ],
+      "metrics": {
+        "safety_contraindication_recall": 1.0,
+        "faithfulness_graph_grounding": 1.0,
+        "urgency_precision": 1.0,
+        "context_recall_alternatives": 1.0,
+        "ragas_composite_score": 1.0
+      }
+    },
+    {
+      "case_id": "CASE_ASTHMA_BETABLOCKER",
+      "status": "complete",
+      "latency_sec": 79.31,
+      "urgency": "Emergency",
+      "urgency_score": 9,
+      "contraindications_found": [
+        "Propranolol is contraindicated for Asthma"
+      ],
+      "metrics": {
+        "safety_contraindication_recall": 1.0,
+        "faithfulness_graph_grounding": 1.0,
+        "urgency_precision": 1.0,
+        "context_recall_alternatives": 1.0,
+        "ragas_composite_score": 1.0
+      }
+    },
+    {
+      "case_id": "CASE_AMI_EMERGENCY",
+      "status": "complete",
+      "latency_sec": 120.6,
+      "urgency": "Emergency",
+      "urgency_score": 10,
+      "contraindications_found": [
+        "Ibuprofen is contraindicated for Myocardial Infarction, Coronary Artery Disease, and Hypertension",
+        "Naproxen is contraindicated for Myocardial Infarction and Hypertension",
+        "Diclofenac is contraindicated for Myocardial Infarction",
+        "Pseudoephedrine is contraindicated for Hypertension"
+      ],
+      "metrics": {
+        "safety_contraindication_recall": 1.0,
+        "faithfulness_graph_grounding": 1.0,
+        "urgency_precision": 1.0,
+        "context_recall_alternatives": 1.0,
+        "ragas_composite_score": 1.0
+      }
+    },
+    {
+      "case_id": "CASE_CKD_NSAID_RISK",
+      "status": "complete",
+      "latency_sec": 226.94,
+      "urgency": "Urgent",
+      "urgency_score": 6,
+      "contraindications_found": [
+        "Naproxen is contraindicated for Chronic Kidney Disease",
+        "Ibuprofen is contraindicated for Chronic Kidney Disease",
+        "Diclofenac is contraindicated for Chronic Kidney Disease"
+      ],
+      "metrics": {
+        "safety_contraindication_recall": 1.0,
+        "faithfulness_graph_grounding": 1.0,
+        "urgency_precision": 1.0,
+        "context_recall_alternatives": 1.0,
+        "ragas_composite_score": 1.0
+      }
+    }
+  ]
+}
