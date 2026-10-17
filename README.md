@@ -1,12 +1,21 @@
 # 🏥 MediGraph — Agentic Clinical Triage & Graph-RAG Platform
 
-> **Hackathon Submission** — Autonomous Clinical Decision Support powered by **FalkorDB Knowledge Graph**, **LangGraph ReAct**, and the **Model Context Protocol (MCP)**.
+### 🕵️ TRACK 01: Agents That Act on Connected Data
+> **Official Hackathon Submission** — Autonomous Clinical Decision Support powered by **FalkorDB Knowledge Graph**, **LangGraph ReAct**, and the **Model Context Protocol (MCP)**.
+>
+> 🎯 **Track 01 Core Pillars:**
+> * 🔗 **Multi-hop reasoning:** Traces multi-step adverse risk chains across symptoms, pathologies, contraindications, and medications using GraphBLAS.
+> * ⚙️ **Graph queries & algorithms as agent tools:** Shortest path traversal, symptom degree centrality, comorbidity community detection, and set-difference disambiguation.
+> * 🔌 **Tool selection through MCP:** 9 clinical graph tools exposed via a standard Model Context Protocol (MCP) server over SSE on port 8010.
+> * 🩺 **Actions based on what the graph shows:** Autonomously pauses for clarifying questions when ambiguous, blocks contraindicated prescriptions, and adjusts triage severity.
+> * 🔍 **Explainable results:** Produces transparent causal path proofs ("Show the path behind the answer") with 100% RAGAS faithfulness.
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/ujwalun11/Medigraph-hackathon)
+[![Track 01](https://img.shields.io/badge/Hackathon-Track_01:_Connected_Data_Agents-blueviolet?style=for-the-badge)](https://github.com/ujwalun11/Medigraph-hackathon)
 [![FalkorDB](https://img.shields.io/badge/Graph_Database-FalkorDB_GraphBLAS-red?style=for-the-badge)](https://www.falkordb.com/)
 [![MCP](https://img.shields.io/badge/Protocol-Model_Context_Protocol-blue?style=for-the-badge)](https://modelcontextprotocol.io/)
 [![LangGraph](https://img.shields.io/badge/Agent_Loop-LangGraph_ReAct-green?style=for-the-badge)](https://langchain-ai.github.io/langgraph/)
-[![License](https://img.shields.io/badge/License-Apache_2.0-orange?style=for-the-badge)](LICENSE)
+[![Demo Video](https://img.shields.io/badge/Demo_Video-Google_Drive-34A853?style=for-the-badge&logo=google-drive)](https://drive.google.com/file/d/1NpWncTtNR7h6FOIIT2Zaq1VD8xYasGdn/view?usp=sharing)
 
 ---
 
@@ -40,10 +49,10 @@ MediGraph solves this through **Graph-RAG over FalkorDB**:
 
 ## 🎥 Demo Video
 
-> **Walkthrough Video:** A comprehensive demonstration of MediGraph showcasing autonomous clinical triage, FalkorDB multi-hop graph traversals, interactive clarifying loops, and MCP tool invocations.
+> **Full Walkthrough Demonstration:** Showcases autonomous clinical triage, FalkorDB multi-hop graph traversals, interactive clarifying loops, and MCP tool invocations in real-time.
 
-* **Watch the Walkthrough Demo:** [Click here to view demo video](./docs/demo.mp4) *(or view on YouTube/Loom: `[Insert Video URL Here]`)*
-* **Interactive UI Dashboard:** Built-in interactive dashboard served at `http://localhost:8008/` featuring:
+* 🎬 **Watch the Demo Video:** **[▶️ Click to Watch on Google Drive](https://drive.google.com/file/d/1NpWncTtNR7h6FOIIT2Zaq1VD8xYasGdn/view?usp=sharing)**
+* 🖥️ **Interactive UI Dashboard:** Built-in interactive dashboard served at `http://localhost:8008/` featuring:
   - Clinical Triage Simulator with real-time graph traversal accordion
   - Natural Language Text-to-Cypher FalkorDB Graph Explorer
   - 5-Layer Privacy & Identity Vault Sandbox

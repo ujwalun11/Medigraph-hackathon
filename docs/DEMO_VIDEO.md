@@ -12,13 +12,9 @@ This directory contains resources for viewing the MediGraph demo video.
 ---
 
 ## Viewing the Demo Video
-
-1. **Local Repository Video File:**
-   - Save your recorded `.mp4` or `.webm` video file to this folder as `demo.mp4`.
-   - Path: `docs/demo.mp4`
-
-2. **Hosted Online Stream:**
-   - [Watch on YouTube / Loom: Link Placeholder](https://github.com/ujwalun11/Medigraph-hackathon)
+ 
+* 🎬 **Google Drive Stream:** **[▶️ Click to Watch MediGraph Walkthrough](https://drive.google.com/file/d/1NpWncTtNR7h6FOIIT2Zaq1VD8xYasGdn/view?usp=sharing)**
+* **Local Video (Optional):** You can also place `demo.mp4` directly into this folder.
 
 ---
 
