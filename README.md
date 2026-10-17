@@ -395,9 +395,13 @@ We evaluated MediGraph across gold-standard multi-condition clinical cases using
 | **Treatment Recommendation** | 70.15% | **97.92%** | **81.74%** |
 | **Clinical Grounding (SapBERT)** | 62.79% | **96.43%** | **76.06%** |
 
-To reproduce the benchmark suite at any time:
+To reproduce the benchmark evaluations at any time:
 ```bash
+# 1. Run the Multi-Turn Agentic RAGAS Benchmark (Faithfulness & Safety Recall):
 python evaluate_ragas.py
+
+# 2. Run the 35-Patient Graph Ontology Precision/Recall Benchmark (Table 6.3):
+python evaluate_clinical_benchmark.py
 ```
 *(Or click "Run Benchmark Suite" directly in Tab 5 of the Web Dashboard).*
 
