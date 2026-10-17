@@ -1,0 +1,798 @@
+{
+    "PATIENT_SIM_001": {
+        "symptoms": "I've been having this really severe pain in my upper abdomen that shoots straight to my back, and I can't seem to keep any food down - I've vomited three times today. I also feel hot and my heart is racing frantically. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Acute Pancreatitis"
+        ],
+        "expected_medications": [
+            "Morphine",
+            "Fentanyl",
+            "Intravenous Fluids"
+        ],
+        "expected_contraindications": [
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_002": {
+        "symptoms": "I've been wheezing badly lately and feeling really tight in my chest, especially when I try to exercise or when I'm around dust. I keep having these coughing fits that leave me breathless and struggling to catch my breath. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Chronic Asthma"
+        ],
+        "expected_medications": [
+            "Salmeterol",
+            "Montelukast",
+            "Budesonide",
+            "Fluticasone",
+            "Albuterol"
+        ],
+        "expected_contraindications": [
+            "Aspirin",
+            "Metoprolol",
+            "Atenolol",
+            "Propranolol"
+        ]
+    },
+    "PATIENT_SIM_003": {
+        "symptoms": "I keep having these terrifying episodes where my heart pounds so hard I think I'm having a heart attack, and I feel like I can't breathe properly - it's like something is choking me. My whole body shakes and sweats profusely during these attacks. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Panic Disorder"
+        ],
+        "expected_medications": [
+            "Clonazepam",
+            "Alprazolam",
+            "Sertraline"
+        ],
+        "expected_contraindications": [
+            "Pseudoephedrine"
+        ]
+    },
+    "PATIENT_SIM_004": {
+        "symptoms": "People keep telling me I'm acting strangely and saying things that don't make sense, and sometimes I hear voices that aren't there having conversations with me. I've been forgetting to take care of myself and doing odd things without realizing it. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Schizophrenia"
+        ],
+        "expected_medications": [
+            "Haloperidol",
+            "Risperidone",
+            "Olanzapine",
+            "Aripiprazole"
+        ],
+        "expected_contraindications": [
+            "Pramipexole",
+            "Levodopa"
+        ]
+    },
+    "PATIENT_SIM_005": {
+        "symptoms": "I get these overwhelming feelings of dread and fear suddenly, and then I lose consciousness and wake up confused with my body jerking uncontrollably. Sometimes I just stare blankly and can't respond to anyone for minutes at a time. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Epilepsy"
+        ],
+        "expected_medications": [
+            "Carbamazepine",
+            "Valproate Sodium",
+            "Lamotrigine",
+            "Levetiracetam"
+        ],
+        "expected_contraindications": [
+            "Bupropion",
+            "Tramadol"
+        ]
+    },
+    "PATIENT_SIM_006": {
+        "symptoms": "I've been feeling nauseous and have thrown up a few times today, and I've had this sharp pain that started near my belly button but has moved to the lower right side of my abdomen. I also feel feverish and just don't have any appetite at all. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Appendicitis"
+        ],
+        "expected_medications": [
+            "Metronidazole",
+            "Ceftriaxone"
+        ],
+        "expected_contraindications": [
+            "Ibuprofen",
+            "Enemas",
+            "Laxatives"
+        ]
+    },
+    "PATIENT_SIM_007": {
+        "symptoms": "I've been getting these squeezing pains in my chest that sometimes spread to my arm, and I feel so tired even with minimal activity. I've also been short of breath and occasionally feel nauseated, especially after walking or climbing stairs. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Coronary Artery Disease"
+        ],
+        "expected_medications": [
+            "Nitroglycerin",
+            "Metoprolol",
+            "Atorvastatin",
+            "Aspirin"
+        ],
+        "expected_contraindications": [
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_008": {
+        "symptoms": "I've been coughing constantly and sometimes wheeze when I breathe, and my legs have been swelling up something terrible. I feel exhausted all the time and my heart seems to be racing even when I'm just sitting still. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Congestive Heart Failure"
+        ],
+        "expected_medications": [
+            "Spironolactone",
+            "Carvedilol",
+            "Lisinopril",
+            "Furosemide"
+        ],
+        "expected_contraindications": [
+            "Pioglitazone",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_009": {
+        "symptoms": "I've had a persistent headache for the past few days along with a dry cough, and I've been alternating between constipation and diarrhea. I've completely lost my appetite and feel generally unwell. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Typhoid Fever"
+        ],
+        "expected_medications": [
+            "Azithromycin",
+            "Ceftriaxone",
+            "Ciprofloxacin"
+        ],
+        "expected_contraindications": [
+            "Dexamethasone"
+        ]
+    },
+    "PATIENT_SIM_010": {
+        "symptoms": "I've been having these coughing fits that leave me gasping for air, and I feel this tightness in my chest that makes it hard to breathe properly. I've been wheezing more frequently, especially at night, and sometimes I can barely catch my breath during an attack. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Chronic Asthma"
+        ],
+        "expected_medications": [
+            "Salmeterol",
+            "Montelukast",
+            "Budesonide",
+            "Fluticasone",
+            "Albuterol"
+        ],
+        "expected_contraindications": [
+            "Aspirin",
+            "Metoprolol",
+            "Atenolol",
+            "Propranolol"
+        ]
+    },
+    "PATIENT_SIM_011": {
+        "symptoms": "I've been hearing voices that aren't there and having trouble organizing my thoughts properly. People say I'm acting strangely and I can't seem to communicate clearly anymore. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Schizophrenia"
+        ],
+        "expected_medications": [
+            "Haloperidol",
+            "Risperidone",
+            "Olanzapine",
+            "Aripiprazole"
+        ],
+        "expected_contraindications": [
+            "Pramipexole",
+            "Levodopa"
+        ]
+    },
+    "PATIENT_SIM_012": {
+        "symptoms": "My face has been constantly red and flushed, with these painful bumps appearing on my cheeks and nose. I've also been having eye irritation and my nose seems to be getting larger and misshapen. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Rosacea"
+        ],
+        "expected_medications": [
+            "Ivermectin Cream",
+            "Doxycycline",
+            "Metronidazole Cream"
+        ],
+        "expected_contraindications": [
+            "Triamcinolone",
+            "Hydrocortisone Cream"
+        ]
+    },
+    "PATIENT_SIM_013": {
+        "symptoms": "I keep having these coughing fits and my chest feels tight like something is squeezing it. I get short of breath easily and hear wheezing when I breathe, especially at night. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Chronic Asthma"
+        ],
+        "expected_medications": [
+            "Salmeterol",
+            "Montelukast",
+            "Budesonide",
+            "Fluticasone",
+            "Albuterol"
+        ],
+        "expected_contraindications": [
+            "Aspirin",
+            "Metoprolol",
+            "Atenolol",
+            "Propranolol"
+        ]
+    },
+    "PATIENT_SIM_014": {
+        "symptoms": "I wake up with terrible headaches and feel exhausted throughout the day no matter how much I sleep. My partner says I snore loudly and sometimes stop breathing, then gasp for air. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Sleep Apnea"
+        ],
+        "expected_medications": [
+            "CPAP Therapy"
+        ],
+        "expected_contraindications": [
+            "Alprazolam",
+            "Diazepam",
+            "Zolpidem"
+        ]
+    },
+    "PATIENT_SIM_015": {
+        "symptoms": "I have severe pain in my upper abdomen that shoots through to my back, along with nausea and vomiting that won't stop. I also have a fever and my heart is racing frantically. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Acute Pancreatitis"
+        ],
+        "expected_medications": [
+            "Morphine",
+            "Fentanyl",
+            "Intravenous Fluids"
+        ],
+        "expected_contraindications": [
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_016": {
+        "symptoms": "I've been feeling terrible for about a week now with a really bad sore throat and fever that won't break. My neck feels swollen and tender, and I have this horrible headache that just won't go away. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Infectious Mononucleosis"
+        ],
+        "expected_medications": [
+            "Prednisone",
+            "Ibuprofen",
+            "Paracetamol"
+        ],
+        "expected_contraindications": [
+            "Ampicillin",
+            "Amoxicillin"
+        ]
+    },
+    "PATIENT_SIM_017": {
+        "symptoms": "I've been hearing voices that aren't there and having trouble organizing my thoughts when I try to speak. I find myself withdrawing from friends and family, and my behavior has become really erratic and confusing to others. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Schizophrenia"
+        ],
+        "expected_medications": [
+            "Haloperidol",
+            "Risperidone",
+            "Olanzapine",
+            "Aripiprazole"
+        ],
+        "expected_contraindications": [
+            "Pramipexole",
+            "Levodopa"
+        ]
+    },
+    "PATIENT_SIM_018": {
+        "symptoms": "I've been having this burning sensation in my chest that comes up into my throat, especially after eating. Sometimes I feel like food is getting stuck when I swallow, and I have this persistent sore throat that's really bothering me. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "GERD"
+        ],
+        "expected_medications": [
+            "Metoclopramide",
+            "Calcium Carbonate",
+            "Famotidine",
+            "Omeprazole"
+        ],
+        "expected_contraindications": [
+            "Aspirin",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_019": {
+        "symptoms": "I'm feeling extremely tired and confused, and I've been nauseous with some chest discomfort. I'm also having trouble catching my breath even when I'm just sitting still. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Acute Kidney Injury (AKI)"
+        ],
+        "expected_medications": [
+            "Furosemide",
+            "Intravenous Fluids"
+        ],
+        "expected_contraindications": [
+            "Contrast Media",
+            "Gentamicin",
+            "Losartan",
+            "Lisinopril",
+            "Diclofenac",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_020": {
+        "symptoms": "I've been feeling dizzy and short of breath, especially when I try to do simple activities. My heart feels like it's racing irregularly, and I'm exhausted all the time with occasional chest pain. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Atrial Fibrillation"
+        ],
+        "expected_medications": [
+            "Digoxin",
+            "Diltiazem",
+            "Metoprolol",
+            "Warfarin",
+            "Apixaban"
+        ],
+        "expected_contraindications": [
+            "Pseudoephedrine",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_021": {
+        "symptoms": "I've been feeling really tired and confused lately, and I'm having chest pain along with nausea that won't go away. I'm also having trouble catching my breath even when I'm not doing much. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Acute Kidney Injury (AKI)"
+        ],
+        "expected_medications": [
+            "Furosemide",
+            "Intravenous Fluids"
+        ],
+        "expected_contraindications": [
+            "Contrast Media",
+            "Gentamicin",
+            "Losartan",
+            "Lisinopril",
+            "Diclofenac",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_022": {
+        "symptoms": "I have this sharp pain in my lower left abdomen that's been getting worse, and I've been nauseous with vomiting that won't stop. I also have a fever and my abdomen feels tender when I touch it. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Diverticulitis"
+        ],
+        "expected_medications": [
+            "Acetaminophen",
+            "Metronidazole",
+            "Ciprofloxacin"
+        ],
+        "expected_contraindications": [
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_023": {
+        "symptoms": "I've noticed my face has become really round and I have these purple stretch marks on my skin that seem to be getting worse. I've gained a lot of weight, especially around my shoulders and midsection, and my skin seems much thinner and bruises easily. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Cushing's Syndrome"
+        ],
+        "expected_medications": [
+            "Metyrapone",
+            "Ketoconazole"
+        ],
+        "expected_contraindications": [
+            "Hydrocortisone",
+            "Prednisone"
+        ]
+    },
+    "PATIENT_SIM_024": {
+        "symptoms": "I've had this persistent cough for weeks now and I've been coughing up blood, which is really concerning. I've also been experiencing night sweats, a low-grade fever, and I've lost a significant amount of weight without trying. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Tuberculosis"
+        ],
+        "expected_medications": [
+            "Ethambutol",
+            "Pyrazinamide",
+            "Rifampin",
+            "Isoniazid"
+        ],
+        "expected_contraindications": [
+            "Acetaminophen",
+            "Paracetamol"
+        ]
+    },
+    "PATIENT_SIM_025": {
+        "symptoms": "My heart has been racing frantically and I can feel my heartbeat pounding in my chest, along with dizziness that makes it hard to stand. I'm also having chest pain and I'm so short of breath even with minimal activity. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Tachycardia"
+        ],
+        "expected_medications": [
+            "Adenosine",
+            "Diltiazem",
+            "Amiodarone",
+            "Metoprolol"
+        ],
+        "expected_contraindications": [
+            "Albuterol",
+            "Pseudoephedrine"
+        ]
+    },
+    "PATIENT_SIM_026": {
+        "symptoms": "I've noticed my face has become really round and puffy, and I'm getting these purple stretch marks on my abdomen even though I haven't gained much weight there. My skin seems so thin lately that I bruise easily from minor bumps. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Cushing's Syndrome"
+        ],
+        "expected_medications": [
+            "Metyrapone",
+            "Ketoconazole"
+        ],
+        "expected_contraindications": [
+            "Hydrocortisone",
+            "Prednisone"
+        ]
+    },
+    "PATIENT_SIM_027": {
+        "symptoms": "I've been feeling extremely tired even with minimal activity, and my legs have been swelling up so badly that my shoes don't fit properly anymore. I also have this persistent cough that won't go away and sometimes I feel like my heart is racing frantically. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Congestive Heart Failure"
+        ],
+        "expected_medications": [
+            "Spironolactone",
+            "Carvedilol",
+            "Lisinopril",
+            "Furosemide"
+        ],
+        "expected_contraindications": [
+            "Pioglitazone",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_028": {
+        "symptoms": "I'm having trouble breathing, especially when I lie down, and I keep wheezing even though I don't have asthma. My heartbeat feels irregular and fast, and I'm exhausted all the time despite getting enough sleep. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Congestive Heart Failure"
+        ],
+        "expected_medications": [
+            "Spironolactone",
+            "Carvedilol",
+            "Lisinopril",
+            "Furosemide"
+        ],
+        "expected_contraindications": [
+            "Pioglitazone",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_029": {
+        "symptoms": "I've been feeling incredibly tired and weak, and my face and hands have been puffier than usual in the mornings. My urine has looked foamy lately and sometimes it's had a pinkish color, and I've also been getting headaches from high blood pressure readings. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Glomerulonephritis"
+        ],
+        "expected_medications": [
+            "Cyclophosphamide",
+            "Prednisone",
+            "Losartan",
+            "Lisinopril"
+        ],
+        "expected_contraindications": [
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_030": {
+        "symptoms": "I've been experiencing severe heartburn and bloating after eating, and I've noticed my stools are black and tarry looking. Yesterday I vomited what looked like coffee grounds, and I've been feeling nauseous almost constantly. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Gastric Ulcer"
+        ],
+        "expected_medications": [
+            "Clarithromycin",
+            "Sucralfate",
+            "Famotidine",
+            "Omeprazole"
+        ],
+        "expected_contraindications": [
+            "Diclofenac",
+            "Naproxen",
+            "Aspirin",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_031": {
+        "symptoms": "I've been feeling really tired and confused lately, and I'm having trouble catching my breath even when I'm just sitting down. I also keep getting this sharp pain in my chest that makes me feel nauseous. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Acute Kidney Injury (AKI)"
+        ],
+        "expected_medications": [
+            "Furosemide",
+            "Intravenous Fluids"
+        ],
+        "expected_contraindications": [
+            "Contrast Media",
+            "Gentamicin",
+            "Losartan",
+            "Lisinopril",
+            "Diclofenac",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_032": {
+        "symptoms": "Sometimes I'll suddenly feel this overwhelming sense of fear and anxiety, and then I'll lose consciousness and start jerking uncontrollably - my family says I just stare off into space during these episodes. I'm scared because I don't remember anything when it happens and I'm worried about having them while driving or working. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Epilepsy"
+        ],
+        "expected_medications": [
+            "Carbamazepine",
+            "Valproate Sodium",
+            "Lamotrigine",
+            "Levetiracetam"
+        ],
+        "expected_contraindications": [
+            "Bupropion",
+            "Tramadol"
+        ]
+    },
+    "PATIENT_SIM_033": {
+        "symptoms": "I have these really itchy, blister-like spots all over my body and I can't stop scratching them - they're driving me crazy! I've also had a fever for the past few days and I just don't feel like eating anything, plus my head has been pounding constantly. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Chickenpox"
+        ],
+        "expected_medications": [
+            "Paracetamol",
+            "Calamine Lotion",
+            "Acyclovir"
+        ],
+        "expected_contraindications": [
+            "Ibuprofen",
+            "Aspirin"
+        ]
+    },
+    "PATIENT_SIM_034": {
+        "symptoms": "I keep getting these fluttering feelings in my chest and my heart seems to race for no reason, especially when I'm anxious or stressed. I've been feeling dizzy and lightheaded quite often, and I'm exhausted even after a full night's sleep. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Mitral Valve Prolapse"
+        ],
+        "expected_medications": [
+            "Propranolol",
+            "Metoprolol"
+        ],
+        "expected_contraindications": [
+            "Pseudoephedrine"
+        ]
+    },
+    "PATIENT_SIM_035": {
+        "symptoms": "I've been going to the bathroom way more than usual and I'm constantly thirsty, plus I've had this dull ache in my abdomen that won't go away. I'm feeling really weak and tired all the time, and I've noticed I'm not as strong as I used to be when doing simple tasks. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Hyperparathyroidism"
+        ],
+        "expected_medications": [
+            "Calcitonin",
+            "Furosemide",
+            "Cinacalcet"
+        ],
+        "expected_contraindications": [
+            "Hydrochlorothiazide"
+        ]
+    },
+    "PATIENT_SIM_036": {
+        "symptoms": "I've had this terrible sore throat for over a week now, and my neck feels so swollen and tender. I'm also running a fever and getting these pounding headaches that won't go away. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Infectious Mononucleosis"
+        ],
+        "expected_medications": [
+            "Prednisone",
+            "Ibuprofen",
+            "Paracetamol"
+        ],
+        "expected_contraindications": [
+            "Ampicillin",
+            "Amoxicillin"
+        ]
+    },
+    "PATIENT_SIM_037": {
+        "symptoms": "I'm having trouble starting to urinate, and when I do, the stream is really weak and dribbly. I feel like I can never completely empty my bladder, and I'm constantly running to the bathroom, especially at night. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Benign Prostatic Hyperplasia (BPH)"
+        ],
+        "expected_medications": [
+            "Dutasteride",
+            "Finasteride",
+            "Tamsulosin"
+        ],
+        "expected_contraindications": [
+            "Diphenhydramine",
+            "Pseudoephedrine"
+        ]
+    },
+    "PATIENT_SIM_038": {
+        "symptoms": "I've been having severe abdominal cramping and pain, and I've noticed blood in my stool lately. I'm also feeling extremely tired all the time and have lost a significant amount of weight without trying. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Crohn's Disease"
+        ],
+        "expected_medications": [
+            "Mesalamine",
+            "Azathioprine",
+            "Prednisone",
+            "Adalimumab"
+        ],
+        "expected_contraindications": [
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_039": {
+        "symptoms": "I've been retaining so much fluid that my legs and face are severely swollen, and I've gained weight rapidly. I feel exhausted and have no appetite, plus my urine looks foamy and strange. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Nephrotic Syndrome"
+        ],
+        "expected_medications": [
+            "Atorvastatin",
+            "Prednisone",
+            "Lisinopril",
+            "Furosemide"
+        ],
+        "expected_contraindications": [
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_040": {
+        "symptoms": "I get this burning sensation in my chest after eating, and sometimes I can feel acid coming back up into my throat. It's gotten so bad that I'm having trouble swallowing and my throat feels sore and irritated. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "GERD"
+        ],
+        "expected_medications": [
+            "Metoclopramide",
+            "Calcium Carbonate",
+            "Famotidine",
+            "Omeprazole"
+        ],
+        "expected_contraindications": [
+            "Aspirin",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_041": {
+        "symptoms": "I've been having really bad pain in my lower left abdomen that started suddenly yesterday, and I've been feeling nauseous and vomiting everything I eat. I also have a fever that won't go away and my stomach is so tender I can barely touch it. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Diverticulitis"
+        ],
+        "expected_medications": [
+            "Acetaminophen",
+            "Metronidazole",
+            "Ciprofloxacin"
+        ],
+        "expected_contraindications": [
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_042": {
+        "symptoms": "My feet have been swelling up terribly and I'm itching all over my body, especially at night. I've also been having trouble sleeping and I notice I'm not urinating as much as I used to. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Chronic Kidney Disease"
+        ],
+        "expected_medications": [
+            "Epoetin Alfa",
+            "Atorvastatin",
+            "Furosemide",
+            "Losartan",
+            "Lisinopril"
+        ],
+        "expected_contraindications": [
+            "Aspirin",
+            "Gadolinium",
+            "Diclofenac",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_043": {
+        "symptoms": "I've been hearing voices that aren't there and having trouble organizing my thoughts when I try to speak to people. I've been withdrawing from my friends and family because I feel like they don't understand what I'm going through. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Schizophrenia"
+        ],
+        "expected_medications": [
+            "Haloperidol",
+            "Risperidone",
+            "Olanzapine",
+            "Aripiprazole"
+        ],
+        "expected_contraindications": [
+            "Pramipexole",
+            "Levodopa"
+        ]
+    },
+    "PATIENT_SIM_044": {
+        "symptoms": "I've been feeling extremely tired and irritable, and my vision has been blurry lately. I'm also constantly hungry even though I'm losing weight, and I just feel weak all the time. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Type 1 Diabetes Mellitus"
+        ],
+        "expected_medications": [
+            "Insulin Aspart",
+            "Insulin Lispro",
+            "Insulin Glargine"
+        ],
+        "expected_contraindications": [
+            "Hydrocortisone",
+            "Dexamethasone",
+            "Prednisone"
+        ]
+    },
+    "PATIENT_SIM_045": {
+        "symptoms": "I've been having severe chest pain with nausea and I'm sweating profusely even though I'm not overheated. I feel lightheaded and short of breath, and I'm incredibly fatigued. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Myocardial Infarction"
+        ],
+        "expected_medications": [
+            "Metoprolol",
+            "Atorvastatin",
+            "Nitroglycerin",
+            "Clopidogrel",
+            "Aspirin"
+        ],
+        "expected_contraindications": [
+            "Diclofenac",
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_046": {
+        "symptoms": "I've been having trouble catching my breath, especially when I try to do simple things around the house, and I feel this tightness in my chest along with a persistent cough that just won't go away. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Emphysema"
+        ],
+        "expected_medications": [
+            "Fluticasone",
+            "Tiotropium",
+            "Albuterol"
+        ],
+        "expected_contraindications": [
+            "Propranolol",
+            "Metoprolol"
+        ]
+    },
+    "PATIENT_SIM_047": {
+        "symptoms": "My leg has been really painful and swollen, and I noticed the skin feels warm and looks reddish compared to my other leg. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Deep Vein Thrombosis"
+        ],
+        "expected_medications": [
+            "Apixaban",
+            "Warfarin",
+            "Enoxaparin",
+            "Rivaroxaban"
+        ],
+        "expected_contraindications": [
+            "Ibuprofen",
+            "Aspirin"
+        ]
+    },
+    "PATIENT_SIM_048": {
+        "symptoms": "I keep getting these episodes where my heart races, I can't breathe properly, and I start sweating and shaking uncontrollably, like something terrible is happening to me. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Panic Disorder"
+        ],
+        "expected_medications": [
+            "Clonazepam",
+            "Alprazolam",
+            "Sertraline"
+        ],
+        "expected_contraindications": [
+            "Pseudoephedrine"
+        ]
+    },
+    "PATIENT_SIM_049": {
+        "symptoms": "I've been running to the bathroom constantly with diarrhea that often has blood in it, and I'm having terrible abdominal cramps along with pain when I need to go. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Ulcerative Colitis"
+        ],
+        "expected_medications": [
+            "Infliximab",
+            "Prednisone",
+            "Mesalamine"
+        ],
+        "expected_contraindications": [
+            "Naproxen",
+            "Ibuprofen"
+        ]
+    },
+    "PATIENT_SIM_050": {
+        "symptoms": "I've been losing weight even though I'm eating more, and I feel hot all the time with this tremor in my hands, plus my eyes seem to be bulging out more than usual. What medications should I avoid? And what treatments are recommended for my condition?",
+        "expected_conditions": [
+            "Graves' Disease"
+        ],
+        "expected_medications": [
+            "Propranolol",
+            "Propylthiouracil",
+            "Methimazole"
+        ],
+        "expected_contraindications": [
+            "Pseudoephedrine"
+        ]
+    }
+}

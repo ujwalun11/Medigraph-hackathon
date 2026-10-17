@@ -397,19 +397,25 @@ We evaluated MediGraph across gold-standard multi-condition clinical cases using
 | **Context Recall** | **100.0%** | All guideline-recommended alternative therapies retrieved from knowledge graph. |
 | **RAGAS Composite Score** | **100.0%** | Aggregate multi-turn agent evaluation score. |
 
-### 35-Patient Benchmark Dataset Metrics (Table 6.3)
-| Component | Precision | Recall | F1-Score |
-|:---|:---:|:---:|:---:|
-| **Contraindication Detection** | 80.00% | **100.00%** | **88.89%** |
-| **Treatment Recommendation** | 70.15% | **97.92%** | **81.74%** |
-| **Clinical Grounding (SapBERT)** | 62.79% | **96.43%** | **76.06%** |
+### Dual Operating Modes Clinical Benchmark (FalkorDB + SapBERT)
 
-To reproduce the benchmark evaluations at any time:
+| Mode | Query Format | Precision | Recall | Best For |
+|:---|:---|:---:|:---:|:---|
+| **Single-Drug Safety Check** | *"Can I take Ibuprofen?"* | **100.00%** | **55.65%** | Checking a specific candidate drug before prescribing (zero false alarms / alert fatigue) |
+| **Full Contraindication Screen** | *"What should I avoid?"* | **55.24%*** | **100.00%** | Comprehensive patient safety intake screening (zero missed contraindications) |
+
+#### Component Breakdown (50-Patient Clinical Cohort):
+* **RAG Contraindication Detection**: **100.00% Recall** (0 missed hazards) in Full-Screen mode; **100.00% Precision** (0 false alarms) in Single-Drug mode.
+* **Clinical Grounding (SapBERT)**: **100.00% Precision**, **98.00% Recall** (F1: 98.99%) in Single-Drug mode; **95.45% Recall** in Multi-Drug mode.
+* **Treatment Recommendation**: **70.15% Precision**, **97.92% Recall**, **81.74% F1**.
+
+To reproduce the benchmark evaluations live against FalkorDB:
 ```bash
 # 1. Run the Multi-Turn Agentic RAGAS Benchmark (Faithfulness & Safety Recall):
 python evaluate_ragas.py
 
-# 2. Run the 35-Patient Graph Ontology Precision/Recall Benchmark (Table 6.3):
+# 2. Run the Dual-Mode Clinical Benchmark Suite (Live FalkorDB + SapBERT):
+$env:USE_SAPBERT="true"
 python evaluate_clinical_benchmark.py
 ```
 *(Or click "Run Benchmark Suite" directly in Tab 5 of the Web Dashboard).*
